@@ -1,9 +1,9 @@
 {
-  "name": "Shlink URL shortener",
-  "description": "Shorten links in your clipboard with Shlink",
-  "uuid": "shlink@timoschwarzer.github.io",
-  "settings-schema": "org.gnome.shell.extensions.shlink",
-  "url": "https://github.com/timoschwarzer/gnome-shell-extension-shlink",
+  "name": "YOURLS URL shortener",
+  "description": "Shorten links in your clipboard with YOURLS",
+  "uuid": "yourls@joshp23.github.io",
+  "settings-schema": "org.gnome.shell.extensions.yourls",
+  "url": "https://github.com/joshp23/gnome-shell-extension-yourls",
   "shell-version": [
     "3.36"
   ]

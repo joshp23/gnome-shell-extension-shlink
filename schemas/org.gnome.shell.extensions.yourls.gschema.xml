@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="gnome-shell-extensions">
 
-    <schema path="/org/gnome/shell/extensions/shlink/" id="org.gnome.shell.extensions.shlink">
+    <schema path="/org/gnome/shell/extensions/yourls/" id="org.gnome.shell.extensions.yourls">
 
         <key type="as" name="shorten-and-copy-shortcut">
-            <default><![CDATA[['<Super><Control>Q']]]></default>
+            <default><![CDATA[['<Super><Control>S']]]></default>
         </key>
 
         <key type="s" name="instance-url">
             <default>
-                "https://my-shlink-instance.example.com"
+                "https://my-yourls-instance.example.com"
             </default>
-            <summary>Shlink instance</summary>
+            <summary>yourls instance</summary>
         </key>
 
         <key type="s" name="api-key">

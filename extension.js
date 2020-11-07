@@ -52,23 +52,26 @@ class Extension {
         this.showNotification('No URL found in clipboard')
         return
       }
-
+      
+      const api_url = `${this.settings.get_string(Prefs.INSTANCE_URL_KEY)}/yourls-api.php`
+      const api_key = this.settings.get_string(Prefs.API_KEY_KEY)      
       const session = new Soup.Session()
-      const message = Soup.form_request_new_from_hash('POST', `${this.settings.get_string(Prefs.INSTANCE_URL_KEY)}/rest/v2/short-urls`, {
-        longUrl: text
+      const message = Soup.form_request_new_from_hash('POST', api_url, {
+        'signature': api_key,
+        'action': 'shorturl',
+        'url': text,
+        'format': 'json'
       })
-      message.request_headers.append('Accept', 'application/json')
-      message.request_headers.append('X-Api-Key', this.settings.get_string(Prefs.API_KEY_KEY))
-
+      
       session.queue_message(message, (session, response) => {
-        if (response.status_code !== 200) {
-          this.showNotification(`Could not shorten URL (${response.status_code})`)
+        const data = JSON.parse(message.response_body.data)
+        if (data.statusCode !== 200) {
+          this.showNotification(`Could not shorten URL: ${data.message}`)
           return
         }
-
-        const data = JSON.parse(message.response_body.data)
-        this.clipboard.set_text(St.ClipboardType.CLIPBOARD, data.shortUrl)
-        this.showNotification(`URL shortened`)
+        
+        this.clipboard.set_text(St.ClipboardType.CLIPBOARD, data.shorturl)
+        this.showNotification(`Shortened URL: ${data.shorturl}`)
       })
     })
   }

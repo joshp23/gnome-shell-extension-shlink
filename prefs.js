@@ -13,9 +13,9 @@ const SHORTEN_AND_COPY_KEY = 'shorten-and-copy-shortcut'
 const INSTANCE_URL_KEY = 'instance-url'
 const API_KEY_KEY = 'api-key'
 
-const ShlinkKeybindingsWidget = new GObject.Class({
-  Name: 'Shlink.Keybindings.Widget',
-  GTypeName: 'ShlinkKeybindingsWidget',
+const YOURLSKeybindingsWidget = new GObject.Class({
+  Name: 'YOURLS.Keybindings.Widget',
+  GTypeName: 'YOURLSKeybindingsWidget',
   Extends: Gtk.Box,
 
   _init(keybindings) {
@@ -140,9 +140,9 @@ const ShlinkKeybindingsWidget = new GObject.Class({
   }
 })
 
-const ShlinkPrefsGrid = new GObject.Class({
-  Name: 'Shlink.Prefs.Grid',
-  GTypeName: 'ShlinkPrefsGrid',
+const YOURLSPrefsGrid = new GObject.Class({
+  Name: 'YOURLS.Prefs.Grid',
+  GTypeName: 'YOURLSPrefsGrid',
   Extends: Gtk.Grid,
 
   _init(params) {
@@ -195,9 +195,9 @@ const ShlinkPrefsGrid = new GObject.Class({
   }
 })
 
-const ShlinkPrefsWidget = new GObject.Class({
-  Name: 'Shlink.Prefs.Widget',
-  GTypeName: 'ShlinkPrefsWidget',
+const YOURLSPrefsWidget = new GObject.Class({
+  Name: 'YOURLS.Prefs.Widget',
+  GTypeName: 'YOURLSPrefsWidget',
   Extends: Gtk.Box,
 
   _init: function (params) {
@@ -223,10 +223,10 @@ const ShlinkPrefsWidget = new GObject.Class({
     let page_label = new Gtk.Label({
       label: 'Settings'
     })
-    let page = new ShlinkPrefsGrid()
+    let page = new YOURLSPrefsGrid()
 
     page.add_entry(
-      'Shlink instance:',
+      'YOURLS instance:',
       INSTANCE_URL_KEY
     )
     page.add_entry(
@@ -237,7 +237,7 @@ const ShlinkPrefsWidget = new GObject.Class({
     let keybindings = {}
     keybindings[SHORTEN_AND_COPY_KEY] = 'Shorten URL in clipboard'
 
-    let keybindings_widget = new ShlinkKeybindingsWidget(
+    let keybindings_widget = new YOURLSKeybindingsWidget(
       keybindings
     )
     page.add_item(keybindings_widget)
@@ -254,7 +254,7 @@ function init() {
 }
 
 function buildPrefsWidget() {
-  const widget = new ShlinkPrefsWidget()
+  const widget = new YOURLSPrefsWidget()
   widget.show_all()
 
   return widget
